@@ -267,6 +267,8 @@ class Solution:
 ``` 
 
 ### 1. Two Sum
+
+**Solution**
 ``` Python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
