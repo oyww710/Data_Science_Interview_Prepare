@@ -150,3 +150,64 @@ class Solution:
         counter = Counter(nums)
         return heapq.nlargest(k, counter.keys(), key= lambda num:counter[num])
 ```
+
+### Important Counter modeule in python
+``` Python
+>>> from collections import Counter
+>>> 
+>>> myList = [1,1,2,3,4,5,3,2,3,4,2,1,2,3]
+>>> print Counter(myList)
+Counter({2: 4, 3: 4, 1: 3, 4: 2, 5: 1})
+>>>
+>>> print Counter(myList).items()
+[(1, 3), (2, 4), (3, 4), (4, 2), (5, 1)]
+>>> 
+>>> print Counter(myList).keys()
+[1, 2, 3, 4, 5]
+>>> 
+>>> print Counter(myList).values()
+[3, 4, 4, 2, 1]
+``` 
+
+### 75. Sort Colors
+Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+``` 
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+``` 
+
+**Solution 1: three pointers**
+```  Python
+class Solution(object):
+    def sortColors(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        l,mid,r=0,0,len(nums)-1
+        while mid<=r:
+            if nums[mid]==0:
+                nums[mid],nums[l]=nums[l],nums[mid]
+                l+=1
+                mid+=1
+            elif nums[mid]==1:
+                mid+=1
+            elif nums[mid]==2:
+                nums[mid],nums[r]=nums[r],nums[mid]
+                r-=1
+```
+
+**Solution 2: Dictionary+merge list**
+``` Python
+from collections import Counter
+class Solution(object):
+    def sortColors(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        c = Counter(nums)
+        for i in range(c[0]): nums[i] = 0
+        for i in range(c[0], c[0] + c[1]): nums[i] = 1
+        for i in range(c[0] + c[1] ,  c[0] + c[1] + c[2]): nums[i] = 2
+```
