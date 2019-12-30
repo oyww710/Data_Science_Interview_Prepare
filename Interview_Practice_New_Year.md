@@ -1,3 +1,24 @@
+Leetcode Practice for DS Interview
+=====================================
+
+### Author: Weiwei Ouyang
+
+Outline
+=====================================
+
+* [167. Two Sum II - Input array is sorted](#167)
+* [215. Kth Largest Element in an Array](#215)
+* [347. Top K Frequent Elements](#347)
+* [75. Sort Colors](#75)
+* [455. Assign Cookies](#455)
+* [69. Sqrt(x)](#69)
+* [1. Two Sum](#1)
+
+
+Problems
+=====================================
+
+<a name="167"></a>
 ### 167. Two Sum II - Input array is sorted
 ``` 
 Input: numbers = [2,7,11,15], target = 9
@@ -26,7 +47,7 @@ class Solution(object):
         return(L+1,R+1)
         
 ``` 
-
+<a name="215"></a>
 ### 215. Kth Largest Element in an Array
 Find the kth largest element in an unsorted array.
 ```
@@ -74,7 +95,7 @@ class Solution:
             return self.findKthLargest(nums[j:], k-j)
         else: return(nums[i])
 ```
-
+<a name="347"></a>
 ### 347. Top K Frequent Elements
 ```
 Input: nums = [1,1,1,2,2,3], k = 2
@@ -84,7 +105,7 @@ Input: nums = [1], k = 1
 Output: [1]
 ```
 
-**Solution 1: just use python function**
+**Solution 1: just use python most common+ zip function**
 ``` Python
 import collections
 
@@ -150,25 +171,7 @@ class Solution:
         counter = Counter(nums)
         return heapq.nlargest(k, counter.keys(), key= lambda num:counter[num])
 ```
-
-### Important Counter modeule in python
-``` Python
->>> from collections import Counter
->>> 
->>> myList = [1,1,2,3,4,5,3,2,3,4,2,1,2,3]
->>> print Counter(myList)
-Counter({2: 4, 3: 4, 1: 3, 4: 2, 5: 1})
->>>
->>> print Counter(myList).items()
-[(1, 3), (2, 4), (3, 4), (4, 2), (5, 1)]
->>> 
->>> print Counter(myList).keys()
-[1, 2, 3, 4, 5]
->>> 
->>> print Counter(myList).values()
-[3, 4, 4, 2, 1]
-``` 
-
+<a name="75"></a>
 ### 75. Sort Colors
 Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
 ``` 
@@ -211,7 +214,7 @@ class Solution(object):
         for i in range(c[0], c[0] + c[1]): nums[i] = 1
         for i in range(c[0] + c[1] ,  c[0] + c[1] + c[2]): nums[i] = 2
 ```
-
+<a name="455"></a>
 ### 455. Assign Cookies
 ```
 Input: [1,2,3], [1,1]
@@ -230,7 +233,7 @@ Explanation: You have 2 children and 3 cookies. The greed factors of 2 children 
 You have 3 cookies and their sizes are big enough to gratify all of the children, 
 You need to output 2.
 ```
-**Solution 1**
+**Solution: Greed algrithom**
 ``` Python
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
@@ -245,6 +248,8 @@ class Solution:
             
         return i        
 ```
+
+<a name="69"></a>
 ### 69. Sqrt(x)
 
 **Solution: Binary search**
@@ -265,10 +270,10 @@ class Solution:
             else: return mid
         return r
 ``` 
-
+<a name="1"></a>
 ### 1. Two Sum
 
-**Solution**
+**Solution: Hash Table**
 ``` Python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -277,5 +282,5 @@ class Solution:
             if target-num in dic:
                 return (dic[target-num], i)
             dic[num] = i
- 
+
 ``` 
