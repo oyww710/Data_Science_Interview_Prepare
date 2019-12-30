@@ -211,3 +211,37 @@ class Solution(object):
         for i in range(c[0], c[0] + c[1]): nums[i] = 1
         for i in range(c[0] + c[1] ,  c[0] + c[1] + c[2]): nums[i] = 2
 ```
+
+### 455. Assign Cookies
+```
+Input: [1,2,3], [1,1]
+
+Output: 1
+
+Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. 
+And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.
+You need to output 1.
+
+Input: [1,2], [1,2,3]
+
+Output: 2
+
+Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. 
+You have 3 cookies and their sizes are big enough to gratify all of the children, 
+You need to output 2.
+```
+**Solution 1**
+``` Python
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        G=sorted(g)
+        S=sorted(s)
+        i = j = 0
+        
+        while i < len(G) and j < len(S):
+            if G[i] <= S[j]:
+                i += 1
+            j += 1
+            
+        return i        
+```
