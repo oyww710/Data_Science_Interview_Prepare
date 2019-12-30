@@ -273,7 +273,7 @@ class Solution:
 <a name="1"></a>
 ### 1. Two Sum
 
-**Solution: Hash Table**
+**Solution 1: Hash Table**
 ``` Python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -283,4 +283,20 @@ class Solution:
                 return (dic[target-num], i)
             dic[num] = i
 
+``` 
+**Solution 2: hash Table**
+``` Python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        
+        for index, num in enumerate(nums):
+            other = target - num
+            
+            if other in seen:
+                return [seen[other], index]
+            else:
+                seen[num] = index
+                
+        return []
 ``` 
