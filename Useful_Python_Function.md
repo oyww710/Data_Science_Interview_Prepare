@@ -9,6 +9,7 @@ Outline
 * [enumerate function](#enum)
 * [map function](#map)
 * [zip and unzip in Python](#zip)
+* [Generate Bucket](#buck)
 
 <a name="Counter"></a>
 ### Important Counter modeule in python
@@ -145,5 +146,32 @@ Player :  Sehwag     Score : 15
 Player :  Gambhir     Score : 17
 Player :  Dravid     Score : 28
 Player :  Raina     Score : 43
+
+```
+<a name="buck"></a>
+### Important Counter modeule in python
+``` Python
+import collections
+nums=[2,3,4,4,4,5,6,7,7,7,8,8,9]
+collections.Counter(nums).items()
+
+Output:
+dict_items([(2, 1), (3, 1), (4, 3), (5, 1), (6, 1), (7, 3), (8, 2), (9, 1)])
+
+collections.Counter(nums)
+Output:
+Counter({2: 1, 3: 1, 4: 3, 5: 1, 6: 1, 7: 3, 8: 2, 9: 1})
+
+bucket = [[] for _ in range(len(nums) + 1)]
+for i, c in collections.Counter(nums).items():
+    bucket[c].append(i)
+bucket
+
+Output:
+[[], [2, 3, 5, 6, 9], [8], [4, 7], [], [], [], [], [], [], [], [], [], []]
+
+bucket[::-1]
+Output:
+[[], [], [], [], [], [], [], [], [], [], [4, 7], [8], [2, 3, 5, 6, 9], []]
 
 ```
