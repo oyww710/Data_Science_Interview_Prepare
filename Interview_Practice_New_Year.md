@@ -13,6 +13,7 @@ Outline
 * [455. Assign Cookies](#455)
 * [69. Sqrt(x)](#69)
 * [1. Two Sum](#1)
+* [242. Valid Anagram](#242)
 
 
 Problems
@@ -26,7 +27,7 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 ``` 
 
-**Solution: two pointers**
+**Solution: two pointers O(n)**
 ``` Python
 class Solution(object):
     def twoSum(self, numbers, target):
@@ -58,7 +59,7 @@ Input: [3,2,3,1,2,4,5,5,6] and k = 4
 Output: 4
 ```
 
-**Solution 1: While loop using max()**
+**Solution 1: While loop using max() O(n)**
 ``` Python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -68,21 +69,21 @@ class Solution:
             i+=1
         return max(nums)
 ```
-**Solution 2: Use sorted function**
+**Solution 2: Use sorted function O(nlog(n))**
 ``` Python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return sorted(nums,reverse=True)[k-1]
 ```
 
-**Solution 3: Heap function**
+**Solution 3: Heap function O(klog(n))**
 ``` Python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         return heapq.nlargest(k, nums)[-1]
 ``` 
 
-**Solution 4: quicksort nlogn average**
+**Solution 4: quicksort nlogn average O(nlogn)**
 ``` Python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -105,7 +106,7 @@ Input: nums = [1], k = 1
 Output: [1]
 ```
 
-**Solution 1: just use python most common+ zip function**
+**Solution 1: just use python most common+ zip function O(n)**
 ``` Python
 import collections
 
@@ -123,7 +124,7 @@ class Solution(object):
         return zip(*collections.Counter(nums).most_common(k))[0]
 ```
 
-**Solution 2:Use most_common function**
+**Solution 2:Use most_common function O(n)**
 ```
 from collections import Counter
 class Solution(object):
@@ -138,7 +139,7 @@ class Solution(object):
         return [i[0] for i in nums]
 ```
 
-**Solution 3: Dictionary+Heap**
+**Solution 3: Dictionary+Heap O(nlogn)**
 ``` Python
 import heapq
 class Solution(object):
@@ -171,6 +172,28 @@ class Solution:
         counter = Counter(nums)
         return heapq.nlargest(k, counter.keys(), key= lambda num:counter[num])
 ```
+**Solution 5: Bucket Sorting O(n)**
+``` Python
+from collections import Counter
+from collections import defaultdict
+
+class Solution:
+    def topKFrequent(self, nums, k):
+
+        counter = Counter(nums)  # key=> num, val => count of num
+        bucket = defaultdict(list)  # key=> count of num, val => list of num with that count
+
+        for key, val in counter.items():  
+            bucket[val].append(key)
+
+        ret = []
+        for i in range(len(nums), 0, -1):
+            if bucket[i]:
+                ret += bucket[i]
+            if len(ret) == k:
+                return ret
+```
+
 <a name="75"></a>
 ### 75. Sort Colors
 Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
@@ -179,7 +202,7 @@ Input: [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 ``` 
 
-**Solution 1: three pointers**
+**Solution 1: three pointers O(n)**
 ```  Python
 class Solution(object):
     def sortColors(self, nums):
@@ -200,7 +223,7 @@ class Solution(object):
                 r-=1
 ```
 
-**Solution 2: Dictionary+merge list**
+**Solution 2: Dictionary+merge list O(n)**
 ``` Python
 from collections import Counter
 class Solution(object):
@@ -233,7 +256,7 @@ Explanation: You have 2 children and 3 cookies. The greed factors of 2 children 
 You have 3 cookies and their sizes are big enough to gratify all of the children, 
 You need to output 2.
 ```
-**Solution: Greed algrithom**
+**Solution: Greed algrithom O(n)**
 ``` Python
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
@@ -252,7 +275,7 @@ class Solution:
 <a name="69"></a>
 ### 69. Sqrt(x)
 
-**Solution: Binary search**
+**Solution: Binary search O(logn)**
 ``` Python
 class Solution:
     def mySqrt(self, x: int) -> int:
@@ -300,3 +323,7 @@ class Solution:
                 
         return []
 ``` 
+
+<a name="1"></a>
+### 242. Valid Anagram
+
