@@ -1,2 +1,2 @@
-# Python_Interview_Prepare
-It is used for saving the Python interview
+# Data_Science_Interview_Prepare
+It is used for data science preparation.
