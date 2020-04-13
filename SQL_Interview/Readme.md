@@ -2,10 +2,18 @@
 
 ### Order和limit一起用可以做比如找第二第三高工资的题
 
+order by 排序不稳定，如果有相同值出现会有问题
+
 ``` SQL
 limit x,y
 ``` 
 x是开始的位置（从0开始，y是从x起走几个）
+
+``` SQL
+Select * from house_price order by price Desc
+Limit 2,1
+``` 
+实际上是找第三row的位置
 
 ### 正则表达式匹配
 
