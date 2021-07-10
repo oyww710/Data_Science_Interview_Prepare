@@ -50,4 +50,6 @@ precision is not influenced by TN
 
 [PCA](https://www.youtube.com/watch?v=FgakZw6K1QQ)
 
+[PCA-tips](https://www.youtube.com/watch?v=oRvgq966yZg)
 
+[PCA-Python](https://www.youtube.com/watch?v=Lsue2gEM9D0)
