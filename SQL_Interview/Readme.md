@@ -28,6 +28,9 @@ Select neighbor,bedroom from house_price as P1
 where price>(select avg(price) from house_price as P2 
 where P1.bedroom=P2.bedroom group by bedroom)
 
+select * from purchase_info as a where purchase_quantity > (select avg(purchase_quantity) 
+from purchase_info as b where a.category=b.catetgory group by category)
+
 ``` 
 
 ### Exists 妙用
@@ -38,3 +41,10 @@ where exists
 where P2.bedroom=2 and 
 P1.bedroom=P2.bedroom)
 ``` 
+
+### Union and Union All 区别
+
+Union会去重 while Union All不去重
+关于 Union 之后的排序，Order by要写到最后，因为是对最终结果排序
+
+
